@@ -1,0 +1,31 @@
+{
+  "name": "hello-admin",
+  "version": "0.0.0",
+  "description": "An admin project.",
+  "author": "李扬 <foryli@qq.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cn-liyang/hello-admin"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "commit": "git add . && cz",
+    "release": "commit-and-tag-version"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "commit-and-tag-version": "^12.0.0",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier-plugin-java": "^2.5.0"
+  },
+  "engines": {
+    "node": "^18 || ^16 || ^14.19",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}

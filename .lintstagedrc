@@ -1,0 +1,3 @@
+{
+  "*.{java,js,ts,vue,scss,html,json,md}": "prettier -u -l -w"
+}
