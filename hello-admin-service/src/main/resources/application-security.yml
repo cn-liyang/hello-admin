@@ -1,0 +1,12 @@
+password:
+  admin: Admin123
+  guest: Guest123
+
+captcha:
+  case-ignored: true
+
+jwt:
+  mac:
+    secret: key-length-256bits-equal-32bytes
+    issuer: cn-liyang
+    subject: hello-admin
