@@ -2,6 +2,7 @@ package com.liyang.helloadmin.project.login.controller;
 
 import com.liyang.helloadmin.framework.security.constant.SecurityPaths;
 import com.liyang.helloadmin.framework.web.controller.BaseController;
+import com.liyang.helloadmin.project.login.service.CaptchaService;
 import lombok.AllArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class CaptchaController extends BaseController {
 
+    private final CaptchaService service;
+
     @GetMapping(SecurityPaths.CAPTCHA)
     public Object getCaptcha() {
-        // TODO
-        return ok(null);
+        return ok(service.getCaptchaBody());
     }
 }
