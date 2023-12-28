@@ -36,7 +36,7 @@ yarn-error.log*
 # local .env files
 .env.local*
 
-# Package lock files
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
+# Auto import files
+.eslintrc-auto-import.json
+auto-imports.d.ts
+components.d.ts
