@@ -1,7 +1,6 @@
 import { ISetting } from "src/types/interfaces";
 
-const SETTING: ISetting = {
-  username: "",
+export const SETTING: ISetting = {
   mainLayout: {
     drawerLeftIsShow: true,
     drawerRightIsShow: false,

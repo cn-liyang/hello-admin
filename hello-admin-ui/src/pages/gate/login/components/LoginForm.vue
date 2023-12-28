@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-const { loginIsLoadingRef, asyncLoginAccount } = useProvidingStateLogin();
+const { loginIsLoadingRef, asyncLogin } = useProvidingStateLogin();
 </script>
 
 <template>
-  <LoginFormSlot @submit="asyncLoginAccount()">
+  <LoginFormSlot @submit="asyncLogin()">
     <LoginFormInputUsername />
     <LoginFormInputPassword />
     <LoginFormInputCaptcha />

@@ -30,7 +30,7 @@ public class LoginController extends BaseController {
         val username = request.getUsername();
         val password = request.getPassword();
         val headers = service.getLoginHeaders(username, password);
-        // TODO
-        return ok(headers);
+        val body = service.getLoginBody();
+        return ok(headers, body);
     }
 }

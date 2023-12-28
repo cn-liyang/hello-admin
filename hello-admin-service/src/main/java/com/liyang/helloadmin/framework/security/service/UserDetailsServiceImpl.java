@@ -1,9 +1,9 @@
 package com.liyang.helloadmin.framework.security.service;
 
-import com.liyang.helloadmin.framework.security.constant.UserRole;
 import com.liyang.helloadmin.framework.security.service.model.UserDetailsImpl;
-import com.liyang.helloadmin.framework.security.util.PasswordUtil;
+import com.liyang.helloadmin.project.system.service.UserService;
 import lombok.AllArgsConstructor;
+import lombok.val;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,17 +18,16 @@ import org.springframework.util.StringUtils;
 @AllArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
 
+    private final UserService userService;
+
     @Override
     public UserDetails loadUserByUsername(String username) {
         if (!StringUtils.hasText(username)) {
             throw new UsernameNotFoundException(username);
         }
-        // FIXME
-        if (UserRole.isAdmin(username)) {
-            return new UserDetailsImpl(PasswordUtil.getAdminEncodedPassword(), username, AuthorityUtils.NO_AUTHORITIES);
-        }
-        if (UserRole.isGuest(username)) {
-            return new UserDetailsImpl(PasswordUtil.getGuestEncodedPassword(), username, AuthorityUtils.NO_AUTHORITIES);
+        val userEntityOptional = userService.getOneOptWithRelationsByUsername(username);
+        if (userEntityOptional.isPresent()) {
+            return new UserDetailsImpl(userEntityOptional.get(), AuthorityUtils.NO_AUTHORITIES);
         }
         throw new UsernameNotFoundException(username);
     }

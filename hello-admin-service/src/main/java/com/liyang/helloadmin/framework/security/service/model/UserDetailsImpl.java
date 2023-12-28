@@ -1,6 +1,7 @@
 package com.liyang.helloadmin.framework.security.service.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.liyang.helloadmin.project.system.entity.UserEntity;
 import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 /**
  * @author cn-liyang
  */
-public record UserDetailsImpl(String password, String username, Collection<? extends GrantedAuthority> authorities)
+public record UserDetailsImpl(UserEntity userEntity, Collection<? extends GrantedAuthority> authorities)
     implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -18,12 +19,12 @@ public record UserDetailsImpl(String password, String username, Collection<? ext
     @Override
     @JsonIgnore
     public String getPassword() {
-        return password;
+        return userEntity.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return username;
+        return userEntity.getUsername();
     }
 
     @Override
@@ -33,16 +34,16 @@ public record UserDetailsImpl(String password, String username, Collection<? ext
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return !userEntity.getLocked();
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
+        return !userEntity.getExpired();
     }
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return userEntity.getEnabled();
     }
 }

@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-const { settingRemovableRef } = useGlobalStateLocalStorageSetting();
+const { userInfoRemovableRef } = useGlobalStateSessionStorageMainUserInfo();
 </script>
 
 <template>
   <q-avatar>
-    <span class="text-black">{{ settingRemovableRef.username?.at(0) || "A" }}</span>
+    <span class="text-black">{{ userInfoRemovableRef.nickname?.at(0) }}</span>
     <q-badge color="red" floating rounded transparent />
   </q-avatar>
 </template>

@@ -4,3 +4,9 @@ export interface IOption {
   label: string;
   caption: string;
 }
+
+export interface IUserInfo {
+  userId: number;
+  nickname: string;
+  avatar: string;
+}

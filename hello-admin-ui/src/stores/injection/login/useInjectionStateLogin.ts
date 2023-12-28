@@ -1,4 +1,4 @@
-import { ICaptchaResponse, ILoginRequest } from "src/types/interfaces/api/login";
+import { ICaptchaResponse, ILoginRequest, ILoginResponse } from "src/types/interfaces/api/login";
 
 const API_RESPONSE_CAPTCHA: ICaptchaResponse = {
   id: "",
@@ -10,10 +10,13 @@ const API_REQUEST_LOGIN: ILoginRequest = {
   username: "Admin",
   password: "Admin123",
 };
+const API_RESPONSE_LOGIN: ILoginResponse = {
+  userInfo: USER_INFO,
+};
 
 const [useProvidingStateLogin, _useInjectedStateLogin] = createInjectionState(() => {
   const { asyncRouteToMain } = useRouteNavigation();
-  const { settingRemovableRef } = useGlobalStateLocalStorageSetting();
+  const { userInfoRemovableRef } = useGlobalStateSessionStorageMainUserInfo();
 
   const loginRequestRef = ref(API_REQUEST_LOGIN);
 
@@ -24,25 +27,27 @@ const [useProvidingStateLogin, _useInjectedStateLogin] = createInjectionState(()
     execute: captchaExecute,
   } = useAsyncState<ICaptchaResponse>(() => asyncRequest(API_REST_CAPTCHA), API_RESPONSE_CAPTCHA, {
     ...USE_ASYNC_STATE_OPTIONS,
-    onSuccess: (r) => {
-      setRef(getRef(loginRequestRef), "id", r.id);
+    onSuccess: ({ id }) => {
+      setRef(getRef(loginRequestRef), "id", id);
       setRef(getRef(loginRequestRef), "code", "");
     },
   });
 
   const {
-    // state: loginResponseRef,
+    state: loginResponseRef,
     isReady: loginIsReadyRef,
     isLoading: loginIsLoadingRef,
     execute: loginExecute,
-  } = useAsyncState<undefined, ILoginRequest[]>((args) => asyncRequest(API_REST_LOGIN, args), undefined, {
+  } = useAsyncState<ILoginResponse, ILoginRequest[]>((args) => asyncRequest(API_REST_LOGIN, args), API_RESPONSE_LOGIN, {
     ...USE_ASYNC_STATE_OPTIONS,
-    onSuccess: () => asyncRouteToMain(),
+    onSuccess: async ({ userInfo }) => {
+      setRef(userInfoRemovableRef, userInfo);
+      await asyncRouteToMain();
+    },
     onError: () => captchaExecute(),
   });
 
-  async function asyncLoginAccount() {
-    setRef(getRef(settingRemovableRef), "username", getRef(loginRequestRef, "username"));
+  async function asyncLogin() {
     await loginExecute(0, getRef(loginRequestRef));
   }
 
@@ -51,10 +56,11 @@ const [useProvidingStateLogin, _useInjectedStateLogin] = createInjectionState(()
     captchaIsReadyRef,
     captchaIsLoadingRef,
     captchaExecute,
-    loginRequestRef: loginRequestRef,
+    loginRequestRef,
+    loginResponseRef,
     loginIsReadyRef,
     loginIsLoadingRef,
-    asyncLoginAccount,
+    asyncLogin,
   };
 });
 
@@ -66,9 +72,10 @@ function useInjectedStateLogin() {
       captchaIsLoadingRef: ref(false),
       captchaExecute: () => undefined,
       loginRequestRef: ref(API_REQUEST_LOGIN),
+      loginResponseRef: ref(API_RESPONSE_LOGIN),
       loginIsReadyRef: ref(false),
       loginIsLoadingRef: ref(false),
-      asyncLoginAccount: () => undefined,
+      asyncLogin: () => undefined,
     }
   );
 }
