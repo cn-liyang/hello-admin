@@ -45,6 +45,16 @@ export const ROUTE_RECORDS: RouteRecordRaw[] = [
     ],
   },
   {
+    ...ROUTE_RECORD_MAIN,
+    redirect: ROUTE_RECORD_MAIN_HOME.path,
+    children: [
+      {
+        ...ROUTE_RECORD_MAIN_HOME,
+        meta: { icon: "mdi-home", label: "主页", caption: "" },
+      },
+    ],
+  },
+  {
     ...ROUTE_RECORD_NONE,
     redirect: ROUTE_RECORD_NONE_404.path,
     children: [

@@ -37,6 +37,6 @@ export default route(function (/* { store, ssrContext } */) {
   });
   router.beforeEach(guardBeforeEach);
   router.beforeResolve(guardBeforeResolve);
-  router.afterEach(guardAfterEach);
+  // router.afterEach(guardAfterEach);
   return router;
 });

@@ -1,0 +1,16 @@
+export enum EQueryOperator {
+  EQUALS = " = ",
+  NOT_EQUALS = " != ",
+  LIKE = " LIKE ",
+  NOT_LIKE = " NOT LIKE ",
+  IN = " IN ",
+  NOT_IN = " NOT IN ",
+  GT = " > ",
+  GE = " >= ",
+  LT = " < ",
+  LE = " <= ",
+  BETWEEN = " BETWEEN ",
+  NOT_BETWEEN = " NOT BETWEEN ",
+  IS_NULL = " IS NULL ",
+  IS_NOT_NULL = " IS NOT NULL ",
+}

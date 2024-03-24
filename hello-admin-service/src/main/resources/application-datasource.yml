@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      test-while-idle: false
+    #    url: jdbc:mysql://localhost:33061/hello_admin?serverTimezone=Asia/Shanghai
+    url: jdbc:h2:~/hello_admin;FILE_LOCK=SOCKET;MODE=MySQL
+    username: root
+    password: 123456
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+
+mybatis-flex:
+  global-config:
+    print-banner: false
