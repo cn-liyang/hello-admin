@@ -11,14 +11,14 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public enum ValueType {
-  NUMB(0, "数字"),
-  TEXT(1, "文本"),
-  BOOL(2, "布尔"),
-  TIME(3, "时间");
+    NUMB(0, "数字"),
+    TEXT(1, "文本"),
+    BOOL(2, "布尔"),
+    TIME(3, "时间");
 
-  @EnumValue
-  @JsonValue
-  private final Integer value;
+    @EnumValue
+    @JsonValue
+    private final Integer value;
 
-  private final String label;
+    private final String label;
 }

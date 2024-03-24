@@ -17,17 +17,17 @@ import lombok.experimental.FieldNameConstants;
 @FieldNameConstants
 public class BaseEntity extends IdEntity {
 
-  @JsonIgnore
-  @Column(value = "is_deleted", isLogicDelete = true)
-  private Long deleted;
+    @JsonIgnore
+    @Column(value = "is_deleted", isLogicDelete = true)
+    private Long deleted;
 
-  private String createBy;
+    private String createBy;
 
-  private LocalDateTime createAt;
+    private LocalDateTime createAt;
 
-  private String updateBy;
+    private String updateBy;
 
-  private LocalDateTime updateAt;
+    private LocalDateTime updateAt;
 
-  private String remark;
+    private String remark;
 }

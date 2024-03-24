@@ -14,8 +14,8 @@ import lombok.experimental.FieldNameConstants;
 @FieldNameConstants
 public class OptionEntity extends BaseEntity {
 
-  private String name;
-  private String icon;
-  private String label;
-  private String caption;
+    private String name;
+    private String icon;
+    private String label;
+    private String caption;
 }

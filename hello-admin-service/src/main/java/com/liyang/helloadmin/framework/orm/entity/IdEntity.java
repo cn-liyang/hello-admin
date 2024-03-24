@@ -12,6 +12,6 @@ import lombok.experimental.FieldNameConstants;
 @FieldNameConstants
 public class IdEntity {
 
-  @Id(keyType = KeyType.Auto)
-  private Long id;
+    @Id(keyType = KeyType.Auto)
+    private Long id;
 }

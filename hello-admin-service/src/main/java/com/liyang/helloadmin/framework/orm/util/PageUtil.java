@@ -9,10 +9,10 @@ import lombok.val;
  */
 public final class PageUtil {
 
-  public static <S, T> Page<T> reducePage(Page<S> source, List<T> targetRecords) {
-    val pageNumber = source.getPageNumber();
-    val pageSize = source.getPageSize();
-    val totalRow = source.getTotalRow();
-    return (new Page<>(targetRecords, pageNumber, pageSize, totalRow));
-  }
+    public static <S, T> Page<T> reducePage(Page<S> source, List<T> targetRecords) {
+        val pageNumber = source.getPageNumber();
+        val pageSize = source.getPageSize();
+        val totalRow = source.getTotalRow();
+        return (new Page<>(targetRecords, pageNumber, pageSize, totalRow));
+    }
 }
