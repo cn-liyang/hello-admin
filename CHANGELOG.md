@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.4](https://github.com/cn-liyang/hello-admin/compare/v0.0.3...v0.0.4) (2024-03-24)
+
+### ✨ Features
+
+- **page:** add support for perm page ([66a68d1](https://github.com/cn-liyang/hello-admin/commit/66a68d14bea143787866c39eff98d9290d741866))
+- **page:** add support for role page ([dbbb474](https://github.com/cn-liyang/hello-admin/commit/dbbb47412a629b16267d8194eb0c3d86a32561f0))
+
 ## [0.0.3](https://github.com/cn-liyang/hello-admin/compare/v0.0.2...v0.0.3) (2024-03-24)
 
 ### ✨ Features
