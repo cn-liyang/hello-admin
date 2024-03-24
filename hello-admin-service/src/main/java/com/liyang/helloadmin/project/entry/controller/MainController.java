@@ -32,4 +32,10 @@ public class MainController extends BaseController {
         val body = service.getUserInfoBody();
         return ok(body);
     }
+
+    @GetMapping(MainPaths.MENU_TREES)
+    public Object getMenuTrees() {
+        val body = service.getMenuTreesBody();
+        return ok(body);
+    }
 }
