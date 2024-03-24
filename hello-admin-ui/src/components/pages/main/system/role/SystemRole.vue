@@ -18,12 +18,14 @@ useProvidingStateSystemRoles();
       <SystemRoleUpdateItem :selected-row="props.row" @set-selected-row="props.setSelectedRow()" />
       <SystemRoleDeleteBatchItem :selected-key="props.key" @set-selected-row="props.setSelectedRow()" />
       <SystemRoleRelateRoleOtmUserItem :selected-key="props.key" @set-selected-row="props.setSelectedRow()" />
+      <SystemRoleRelateRoleOtmPermItem :selected-key="props.key" @set-selected-row="props.setSelectedRow()" />
     </template>
     <template #card-bottom="props">
       <SystemRoleCreateDialog @ok="props.doRefresh()" />
       <SystemRoleUpdateDialog @ok="props.doRefresh()" />
       <SystemRoleDeleteBatchDialog @ok="props.doRefresh()" />
       <SystemRoleRelateRoleOtmUserDialog />
+      <SystemRoleRelateRoleOtmPermDialog />
     </template>
   </TableReadSearchSlot>
 </template>

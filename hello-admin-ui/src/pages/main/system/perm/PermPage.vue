@@ -1,3 +1,5 @@
 <template>
-  <MainPageSlot> PermPage.vue </MainPageSlot>
+  <MainPageSlot>
+    <SystemPerm />
+  </MainPageSlot>
 </template>

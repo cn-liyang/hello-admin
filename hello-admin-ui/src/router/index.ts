@@ -1,5 +1,6 @@
 import { route } from "quasar/wrappers";
 import { createMemoryHistory, createRouter, createWebHashHistory, createWebHistory } from "vue-router";
+import { IMenuCata, IMenuRapi } from "src/types/interfaces/api/system/perm";
 
 declare module "vue-router" {
   export interface RouteMeta {
@@ -7,6 +8,8 @@ declare module "vue-router" {
     label: string;
     caption: string;
     cached?: boolean;
+    catas?: IMenuCata[];
+    rapis?: IMenuRapi[];
   }
 }
 

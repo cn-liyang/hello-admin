@@ -2,4 +2,8 @@
 
 It's hello-admin's backend project.
 
-## Project Setup
+## Setup
+
+### Generate mybatis-flex `XxxTableDef` files
+
+Just run 'HelloAdminApplication'
