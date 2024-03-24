@@ -1,3 +1,5 @@
 <template>
-  <MainPageSlot> RolePage.vue </MainPageSlot>
+  <MainPageSlot>
+    <SystemRole />
+  </MainPageSlot>
 </template>
