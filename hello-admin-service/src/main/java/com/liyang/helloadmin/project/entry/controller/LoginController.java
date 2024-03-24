@@ -4,6 +4,8 @@ import com.liyang.helloadmin.framework.security.constant.SecurityPaths;
 import com.liyang.helloadmin.framework.security.constant.SecurityUsers;
 import com.liyang.helloadmin.framework.security.util.AuthenticationUtil;
 import com.liyang.helloadmin.framework.web.controller.BaseController;
+import com.liyang.helloadmin.framework.web.encryption.annotation.RsaDecryption;
+import com.liyang.helloadmin.framework.web.encryption.annotation.RsaEncryption;
 import com.liyang.helloadmin.project.entry.controller.model.LoginRequest;
 import com.liyang.helloadmin.project.entry.service.LoginService;
 import com.liyang.helloadmin.project.entry.util.CaptchaUtil;
@@ -26,6 +28,8 @@ public class LoginController extends BaseController {
     private final LoginService service;
 
     @PostMapping(SecurityPaths.LOGIN)
+    @RsaDecryption
+    @RsaEncryption
     public Object login(@RequestBody LoginRequest request) {
         val username = request.getUsername();
         val password = request.getPassword();
@@ -37,7 +41,8 @@ public class LoginController extends BaseController {
         try (val ignored = new UserEntityContext()) {
             AuthenticationUtil.authenticate(username, password);
             val headers = service.getLoginHeaders();
-            return ok(headers);
+            val body = service.getLoginBody();
+            return ok(headers, body);
         }
     }
 }
